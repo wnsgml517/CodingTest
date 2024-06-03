@@ -7,9 +7,15 @@ mode = {"pop": 0 ,"size":1,"empty":2,"top":3,"push":4}
 
 for i in range (N):
     li = sys.stdin.readline().split()
-    n = len(stack)
+    
     
     index = mode[li[0]]
+
+    if index == 4:
+        stack.append(li[1])
+        continue
+    
+    n = len(stack)
     
     if index == 0:
         if n==0:
@@ -32,6 +38,5 @@ for i in range (N):
         else:
             print(stack[-1])
 
-    elif index == 4:
-        stack.append(li[1])
+    
 
