@@ -1,22 +1,24 @@
 import sys
 
-input = sys.stdin.read
-data = input().split()
-
-P = int(data[0])
-index = 1
+P = int(input())
 
 for _ in range(P):
-    cnt = 0
-    li = list(map(int, data[index+1:index+21]))
-    index += 21
-    
-    sorted_list = []
-    for i, value in enumerate(li):
-        pos = i
-        while pos > 0 and sorted_list[pos-1] > value:
-            pos -= 1
-        sorted_list.insert(pos, value)
-        cnt += i - pos
 
-    print(data[index-21], cnt)
+    cnt = 0
+    
+    li = sys.stdin.readline().split()
+
+    print(li[0], end=" ")
+
+    li = list(map(int, li[1:]))
+
+    for i in range(1, len(li)):
+        value = li[i]
+        j = i
+        while j > 0 and li[j-1] > value:
+            li[j] = li[j-1]
+            j -= 1
+            cnt += 1
+        li[j] = value
+    
+    print(cnt)
